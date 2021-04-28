@@ -1,10 +1,14 @@
 import React from "react";
+import { useState } from "react";
 import Fakedata from "../../Fakedata/fakedata.json";
 import Product from "../Product/Product";
 import "./Home.css";
 function Home() {
-  const handleAddProduct = () => {
-    console.log("product added");
+  const [cart, setCart] = useState([]);
+  const handleAddProduct = (product) => {
+    console.log(product);
+    const NewCart = [...cart, product];
+    setCart(NewCart);
   };
   return (
     <div className="Home-container">
@@ -18,6 +22,7 @@ function Home() {
       </div>
       <div className="cart-container">
         <h3>this is cart </h3>
+        <h5>Order summery :{cart.length}</h5>
       </div>
     </div>
   );
