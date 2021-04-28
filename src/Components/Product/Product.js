@@ -9,6 +9,9 @@ const Product = (props) => {
       </div>
       <div className="product-name">
         <h3>{name} </h3>
+        <p>{price}Taka </p>
+        <br />
+        <button className="btn btn-primary" onClick={props.handleAddProduct}>Buy Now</button>
       </div>
     </div>
   );
