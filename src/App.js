@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Review from "./Components/Review/Review";
 import Admin from "./Components/Admin/Admin";
 import NotFound from "./Components/NotFound/NotFound";
+import ProductDetail from "./Components/ProductDetail/ProductDetail";
 
 export default function App() {
   return (
@@ -27,6 +28,9 @@ export default function App() {
           <Route exact path="/">
             {" "}
             <Home />
+            <Route path="/product/:productname">
+              <ProductDetail />
+            </Route>
           </Route>
           <Route path="*">
             {" "}
