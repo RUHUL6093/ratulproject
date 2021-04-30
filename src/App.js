@@ -28,10 +28,11 @@ export default function App() {
           <Route exact path="/">
             {" "}
             <Home />
-            <Route path="/product/:productname">
-              <ProductDetail />
-            </Route>
           </Route>
+          <Route path="/product/:name">
+            <ProductDetail />
+          </Route>
+
           <Route path="*">
             {" "}
             <NotFound />
