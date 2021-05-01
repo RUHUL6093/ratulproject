@@ -11,7 +11,9 @@ function Home() {
     console.log(product);
     const NewCart = [...cart, product];
     setCart(NewCart);
-    addToDatabaseCart(product.name, 1);
+    const sameProduct = NewCart.filter((pd) => pd.name === product.name);
+    const count = sameProduct.length;
+    addToDatabaseCart(product.name, count);
   };
   return (
     <div className="Home-container">
