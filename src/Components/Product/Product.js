@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Product.css";
 const Product = (props) => {
+  console.log(props);
   const { img, name, price } = props.product;
   return (
     <div className="product">
@@ -9,16 +10,17 @@ const Product = (props) => {
         <img src={img} alt="" />
       </div>
       <div className="product-name">
-      
-        <h3><Link to={'/product/'+name}>{name}</Link></h3>
+        <h3>
+          <Link to={"/product/" + name}>{name}</Link>
+        </h3>
         <p>{price}Taka </p>
         <br />
-        <button
+        { props.showAddToCart && <button
           className="btn btn-primary"
           onClick={() => props.handleAddProduct(props.product)}
         >
           Buy Now
-        </button>
+        </button>}
       </div>
     </div>
   );
