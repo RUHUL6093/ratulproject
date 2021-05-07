@@ -4,6 +4,9 @@ import Fakedata from "../../Fakedata/fakedata.json";
 import ReviewItem from "../../ReviewItem/ReviewItem";
 const Review = () => {
   const [cart, setCart] = useState([]);
+  const removeProduct = (name) => {
+    console.log("remove clicked");
+  };
   useEffect(() => {
     const saveCart = getDatabaseCart();
     const productnames = Object.keys(saveCart);
@@ -19,7 +22,9 @@ const Review = () => {
     <div>
       <h1>cart items :{cart.length}</h1>
       {cart.map((product) => (
-        <ReviewItem product={product}></ReviewItem>
+        <ReviewItem product={product} removeProduct={removeProduct}>
+          {" "}
+        </ReviewItem>
       ))}
     </div>
   );

@@ -13,7 +13,12 @@ const ReviewItem = (props) => {
       <h1 className="product-name"> {name}</h1>
       <p> Quantity:{quantity}</p>
       <br />
-      <button className="btn btn-primary">Remove item </button>
+      <button
+        className="btn btn-primary"
+        onClick={props.removeProduct()}
+      >
+        Remove item{" "}
+      </button>
     </div>
   );
 };
