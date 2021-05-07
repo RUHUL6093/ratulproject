@@ -5,7 +5,9 @@ import ReviewItem from "../../ReviewItem/ReviewItem";
 const Review = () => {
   const [cart, setCart] = useState([]);
   const removeProduct = (name) => {
-    console.log("remove clicked");
+    console.log("remove clicked", name);
+    const newCart = cart.filter((product) => product.name !== name);
+    setCart(newCart);
   };
   useEffect(() => {
     const saveCart = getDatabaseCart();
