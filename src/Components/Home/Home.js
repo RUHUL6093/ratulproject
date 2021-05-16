@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import Fakedata from "../../Fakedata/fakedata.json";
 import { addToDatabaseCart } from "../../Utilities/databaseManager";
@@ -7,6 +7,14 @@ import Product from "../Product/Product";
 import "./Home.css";
 function Home() {
   const [cart, setCart] = useState([]);
+useEffect(()=>{
+  const saveCart = getDatabaseCart();
+  const productnames = Object.keys(saveCart);
+  const cartProduct = productnames.map((name) => {
+    const product = Fakedata.find((product) => product.name === name);
+    product.quantity = saveCart[name];
+    return product;
+},[])
   const handleAddProduct = (product) => {
     console.log(product);
     const NewCart = [...cart, product];
