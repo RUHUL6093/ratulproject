@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
   getDatabaseCart,
+  processOrder,
   removeFromDatabaseCart
 } from "../../Utilities/databaseManager";
 import Fakedata from "../../Fakedata/fakedata.json";
@@ -8,7 +9,11 @@ import ReviewItem from "../../ReviewItem/ReviewItem";
 import Cart from "../Cart/Cart";
 // import { Link } from "react-router-dom";
 const Review = () => {
-  const [cart, setCart] = useState([]); const handlePlaceOrder = () => {console.log('place ordered'),}
+  const [cart, setCart] = useState([]);
+  const handlePlaceOrder = () => {
+    setCart([]);
+    processOrder();
+  };
   const removeProduct = (name) => {
     console.log("remove clicked", name);
     const newCart = cart.filter((product) => product.name !== name);
@@ -37,7 +42,9 @@ const Review = () => {
       </div>
       <div className="cart-container">
         <Cart cart={cart}>
-          <button  onClick= {handlePlaceOrder}className="btn btn-success">Place Order</button>
+          <button onClick={handlePlaceOrder} className="btn btn-success">
+            Place Order
+          </button>
         </Cart>
       </div>
     </div>
