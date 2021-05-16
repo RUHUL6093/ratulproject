@@ -6,6 +6,7 @@ import {
 import Fakedata from "../../Fakedata/fakedata.json";
 import ReviewItem from "../../ReviewItem/ReviewItem";
 import Cart from "../Cart/Cart";
+// import { Link } from "react-router-dom";
 const Review = () => {
   const [cart, setCart] = useState([]);
   const removeProduct = (name) => {
@@ -35,7 +36,11 @@ const Review = () => {
         ))}
       </div>
       <div className="cart-container">
-        <Cart cart={cart}></Cart>
+        <Cart cart={cart}>
+          {/* <Link to="/review">
+            <button className="btn btn-success">Review Order</button>
+          </Link> */}
+        </Cart>
       </div>
     </div>
   );
