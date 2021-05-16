@@ -7,6 +7,7 @@ import {
 } from "../../Utilities/databaseManager";
 import Cart from "../Cart/Cart";
 import Product from "../Product/Product";
+import { Link } from "react-router-dom";
 import "./Home.css";
 function Home() {
   const [cart, setCart] = useState([]);
@@ -40,7 +41,11 @@ function Home() {
         ))}
       </div>
       <div className="cart-container">
-        <Cart cart={cart}></Cart>
+        <Cart cart={cart}>
+        <Link to="/review">
+        <button className="btn btn-success">Review Order</button>
+      </Link>
+        </Cart>
       </div>
     </div>
   );

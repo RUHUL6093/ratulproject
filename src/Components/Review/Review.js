@@ -8,7 +8,7 @@ import ReviewItem from "../../ReviewItem/ReviewItem";
 import Cart from "../Cart/Cart";
 // import { Link } from "react-router-dom";
 const Review = () => {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([]); const handlePlaceOrder = () => {console.log('place ordered'),}
   const removeProduct = (name) => {
     console.log("remove clicked", name);
     const newCart = cart.filter((product) => product.name !== name);
@@ -37,9 +37,7 @@ const Review = () => {
       </div>
       <div className="cart-container">
         <Cart cart={cart}>
-          {/* <Link to="/review">
-            <button className="btn btn-success">Review Order</button>
-          </Link> */}
+          <button  onClick= {handlePlaceOrder}className="btn btn-success">Place Order</button>
         </Cart>
       </div>
     </div>
