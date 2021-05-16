@@ -6,6 +6,8 @@ import Review from "./Components/Review/Review";
 import Admin from "./Components/Admin/Admin";
 import NotFound from "./Components/NotFound/NotFound";
 import ProductDetail from "./Components/ProductDetail/ProductDetail";
+import Shipment from "./Components/shipment/shipment";
+import Login from "./Components/Login/Login";
 
 export default function App() {
   return (
@@ -24,6 +26,14 @@ export default function App() {
           <Route path="/admin">
             {" "}
             <Admin />
+          </Route>
+          <Route path="/login">
+            {" "}
+            <Login />
+          </Route>
+          <Route path="/shipment">
+            {" "}
+            <Shipment />
           </Route>
           <Route exact path="/">
             {" "}

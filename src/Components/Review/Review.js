@@ -7,12 +7,13 @@ import {
 import Fakedata from "../../Fakedata/fakedata.json";
 import ReviewItem from "../../ReviewItem/ReviewItem";
 import Cart from "../Cart/Cart";
+import { useHistory } from "react-router-dom";
 // import { Link } from "react-router-dom";
 const Review = () => {
   const [cart, setCart] = useState([]);
-  const handlePlaceOrder = () => {
-    setCart([]);
-    processOrder();
+  const history = useHistory();
+  const handleProceedCheckout = () => {
+    history.push("/shipment");
   };
   const removeProduct = (name) => {
     console.log("remove clicked", name);
@@ -42,8 +43,8 @@ const Review = () => {
       </div>
       <div className="cart-container">
         <Cart cart={cart}>
-          <button onClick={handlePlaceOrder} className="btn btn-success">
-            Place Order
+          <button onClick={handleProceedCheckout} className="btn btn-success">
+            Proceed Checkout
           </button>
         </Cart>
       </div>
