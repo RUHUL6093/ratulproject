@@ -15,44 +15,46 @@ export const UserContext = createContext();
 export default function App() {
   const [loggedInUser, setloggedInUser] = useState({});
   return (
-    <UserContext.Provider value={[loggedInUser,setloggedInUser]}>
-      <Header />
-      <Router>
-        <Switch>
-          <Route path="/home">
-            {" "}
-            <Home />
-          </Route>
-          <Route path="/review">
-            {" "}
-            <Review />
-          </Route>
-          <Route path="/admin">
-            {" "}
-            <Admin />
-          </Route>
-          <Route path="/login">
-            {" "}
-            <Login />
-          </Route>
-          <Route path="/shipment">
-            {" "}
-            <Shipment />
-          </Route>
-          <Route exact path="/">
-            {" "}
-            <Home />
-          </Route>
-          <Route path="/product/:name">
-            <ProductDetail />
-          </Route>
+    <div className="App">
+      <UserContext.Provider value={[loggedInUser, setloggedInUser]}>
+        <Header />
+        <Router>
+          <Switch>
+            <Route path="/home">
+              {" "}
+              <Home />
+            </Route>
+            <Route path="/review">
+              {" "}
+              <Review />
+            </Route>
+            <Route path="/admin">
+              {" "}
+              <Admin />
+            </Route>
+            <Route path="/login">
+              {" "}
+              <Login />
+            </Route>
+            <Route path="/shipment">
+              {" "}
+              <Shipment />
+            </Route>
+            <Route exact path="/">
+              {" "}
+              <Home />
+            </Route>
+            <Route path="/product/:name">
+              <ProductDetail />
+            </Route>
 
-          <Route path="*">
-            {" "}
-            <NotFound />
-          </Route>
-        </Switch>
-      </Router>
-    </UserContext.Provider>
+            <Route path="*">
+              {" "}
+              <NotFound />
+            </Route>
+          </Switch>
+        </Router>
+      </UserContext.Provider>{" "}
+    </div>
   );
 }
