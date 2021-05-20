@@ -9,6 +9,7 @@ import ProductDetail from "./Components/ProductDetail/ProductDetail";
 import Shipment from "./Components/shipment/shipment";
 import Login from "./Components/Login/Login";
 import { createContext, useState } from "react";
+import PrivateRoute from "./Components/Privateroute/Privateroute";
 
 export const UserContext = createContext();
 
@@ -36,10 +37,10 @@ export default function App() {
               {" "}
               <Login />
             </Route>
-            <Route path="/shipment">
+            <PrivateRoute path="/shipment">
               {" "}
               <Shipment />
-            </Route>
+            </PrivateRoute>
             <Route exact path="/">
               {" "}
               <Home />
