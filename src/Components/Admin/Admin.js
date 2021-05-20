@@ -1,8 +1,9 @@
 import React from "react";
+// import TweenLite from 'gsap/TweenLite'
 import Fakedata from "../../Fakedata/fakedata.json";
 const Admin = () => {
   const handleAddProduct = () => {
-    fetch("https://5562b.sse.codesandbox.io/addProducts",{
+    fetch('https://5562b.sse.codesandbox.io/addProducts',{
       method:'POST',
       headers:{
         'Content-Type': 'application/json'
@@ -14,5 +15,6 @@ const Admin = () => {
       <button onClick={handleAddProduct}>Add Product </button>
     </div>
   );
-};
+}; 
+
 export default Admin;
