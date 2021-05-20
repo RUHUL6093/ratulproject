@@ -1,39 +1,78 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import firebase from "firebase/app";
 import "firebase/auth";
-import firebaseconfig from "./firebase.config";
-import { UserContext } from "../../App";
-firebase.initializeApp(firebaseconfig);
+import firebaseConfig from "./firebase.config";
+import { useHistory, useLocation } from "react-router-dom";
+// firebase.initializeApp(firebaseConfiq);
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 
 const Login = () => {
-  const [loggedInUser, setloggedInUser] = useContext(UserContext);
-  const provider = new firebase.auth.GoogleAuthProvider();
-  const handleSignIn = () => {
+  const googleProvider = new firebase.auth.GoogleAuthProvider();
+  const fbProvider = new firebase.auth.FacebookAuthProvider();
+  const history = useHistory();
+  const location = useLocation();
+  const [error, setError] = useState("");
+
+  let { from } = location.state || { from: { pathname: "/" } };
+
+  const handleGooogleSignIn = () => {
     firebase
       .auth()
-      .signInWithPopup(provider)
+      .signInWithPopup(googleProvider)
       .then((result) => {
-        var credential = result.credential;
+        const user = result.user;
+        const loggedInUser = {
+          name: user.displayName,
+          email: user.email,
+          img: user.photoURL
+        };
 
-        var token = credential.accessToken;
+        localStorage.setItem("user", JSON.stringify(loggedInUser));
+        history.replace(from);
+      })
 
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        setError(errorMessage);
+      });
+  };
+  const handleFbSignIn = () => {
+    firebase
+      .auth()
+      .signInWithPopup(fbProvider)
+      .then((result) => {
         var user = result.user;
         console.log(user);
       })
       .catch((error) => {
-        var errorCode = error.code;
         var errorMessage = error.message;
-
-        var email = error.email;
-
-        var credential = error.credential;
-        console.log(errorCode, errorMessage, email);
+        console.log(errorMessage);
       });
   };
-
   return (
-    <div>
-      <button onClick={handleSignIn}>Sign In </button>
+    <div className="container m-5">
+      <div>
+        <button
+          onClick={handleGooogleSignIn}
+          className="btn btn-primary text-center"
+        >
+          {" "}
+          Continue With Google
+        </button>
+      </div>
+      <br />
+      <div>
+        <button
+          onClick={handleFbSignIn}
+          className="btn btn-primary text-center"
+        >
+          {" "}
+          Continue With Fcaebook
+        </button>
+      </div>
     </div>
   );
 };
